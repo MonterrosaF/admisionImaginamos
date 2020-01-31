@@ -1,12 +1,17 @@
 const conexion = require("./conexion");
 
 const orderModel = {
-  getOrders: async () => {
-    if (conexion) {
-      const response = await conexion.query("SELECT * FROM `order`");
-      return response;
+  getOrders: (callback) => {
+    if(conexion){
+        conexion.query('SELECT * FROM `order`', (err, row) => {
+            if(err){
+                throw err;
+            }else{
+                callback(null, row)
+            }
+        })
     }
-  },
+},
   createOrders: async req => {
     const newOrder = {
       user_id: req.body.user_id,

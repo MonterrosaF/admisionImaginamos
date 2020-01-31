@@ -1,11 +1,16 @@
 const conexion = require("./conexion");
 
 const userModel = {
-  getUsers: async () => {
-    if (conexion) {
-      const response = conexion.query("SELECT * FROM `users`");
-      return response;
-    }
+  getUsers: (callback) => {
+    if(conexion){
+      conexion.query('SELECT * FROM `users`', (err, row) => {
+          if(err){
+              throw err;
+          }else{
+              callback(null, row)
+          }
+      })
+  }
   },
   createUsers: async req => {
     const newUser = {

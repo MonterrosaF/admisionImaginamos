@@ -2,8 +2,9 @@ const user = require("./../../models/user");
 
 const userRoutes = {
   get: (req, res) => {
-    const getUsers = user.getUsers();
-    res.json(getUsers);
+    user.getUsers((err, data) => {
+      res.json(data);
+  })
   },
   post: (req, res) => {
     const postUser = user.createUsers(req);

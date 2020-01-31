@@ -1,9 +1,10 @@
 const order = require("./../../models/order");
 
 const orderRoutes = {
-  get: (req, res) => {
-    const getOrder = order.getOrders();
-    res.json(getOrder);
+  get: (req, res) =>  {
+    order.getOrders((err, data) => {
+      res.json(data);
+  })
   },
   post: (req, res) => {
     const postOrder = order.createOrders(req);
