@@ -13,11 +13,14 @@ const orderModel = {
     }
 },
   createOrders: async req => {
+    // const driversData = await conexion.query("SELECT usuarios.id, usuarios.rol_id FROM `users` usuarios JOIN `order` orden ON usuarios.rol_id = orden.id")
+    const driversData =  conexion.query("SELECT usuarios.id FROM `users` usuarios where usuarios.rol_id = 2 ORDER BY RAND() LIMIT 1")
     const newOrder = {
       user_id: req.body.user_id,
       delivery_address: req.body.delivery_address,
       delivery_date: req.body.delivery_date,
-      time_duration: req.body.time_duration
+      time_duration: req.body.time_duration,
+      driver: driversData
     };
 
     if (conexion) {
