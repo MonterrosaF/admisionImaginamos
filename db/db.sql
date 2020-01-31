@@ -29,8 +29,11 @@ CREATE TABLE IF NOT EXISTS `order`(
     `delivery_address` varchar(50) NOT NULL UNIQUE,
     `delivery_date` date NOT NULL,
     `time_duration` varchar(50) NOT NULL,
+    `driver` int,
     `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
     `updated_at` DATETIME ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY(`id`),
     FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `rol`(type) VALUES ('usuario'),('driver')

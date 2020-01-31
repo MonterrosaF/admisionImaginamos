@@ -3,7 +3,7 @@ const conexion = require("./conexion");
 const orderModel = {
   getOrders: (callback) => {
     if(conexion){
-        conexion.query('SELECT * FROM `order`', (err, row) => {
+        conexion.query('SELECT id, user_id, delivery_address, delivery_date, FROM `order`', (err, row) => {
             if(err){
                 throw err;
             }else{

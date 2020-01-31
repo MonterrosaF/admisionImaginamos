@@ -3,7 +3,7 @@ const conexion = require("./conexion");
 const userModel = {
   getUsers: (callback) => {
     if(conexion){
-      conexion.query('SELECT * FROM `users`', (err, row) => {
+      conexion.query('SELECT * FROM `users` WHERE rol_id = 1', (err, row) => {
           if(err){
               throw err;
           }else{
