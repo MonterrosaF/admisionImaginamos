@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `rol`(
 
 CREATE TABLE IF NOT EXISTS `users`(
     `id` int NOT NULL AUTO_INCREMENT,
-    `rol_id` int(11) NOT NULL, 
+    `rol_id` int NOT NULL, 
     `name` varchar(50) NOT NULL,
     `last_name` varchar(50) NOT NULL,
     `email` varchar(50) NOT NULL UNIQUE,
